@@ -1,0 +1,96 @@
+body{
+    background-color: orange;
+}
+.pokemon{
+    cursor: pointer;
+    width: 17%;
+    background-size: 100%;
+    border-radius: 10%;
+    border: solid 1px white;
+   
+   
+
+}
+h1{
+    text-align: center;
+}
+#sub-type{
+    display: inline-block;
+}
+#type{
+    display: inline-block;
+}
+
+#modal-img{
+    height: 150px;
+}
+
+
+
+.fire{
+    background-color: rgb(231, 33, 33);
+}
+.grass{
+    background-color: green;
+}
+.normal{
+    background-color: grey;
+}
+.steel{
+    background-color: darkgrey;
+}
+.bug{
+    background-color: darkgreen;
+}
+.water{
+    background-color: rgb(31, 192, 255);
+}
+.electric{
+    background-color: rgb(224, 224, 12);
+}
+.ground{
+    background-color: rgb(151, 68, 68);
+}
+.fighting{
+    background-color: red;
+}
+.poison{
+    background-color: purple;
+}
+.flying{
+    background-color: lightgrey;
+}
+.psychic{
+    background-color: palevioletred
+}
+.ice{
+    background-color: skyblue;
+}
+.ghost{
+    background-color: darkorchid;
+}
+.rock{
+    background-color: rosybrown;
+}
+.dark{
+    background-color: rgb(75, 67, 67);
+}
+.dragon{
+    background-color: chocolate;
+}
+.fairy{
+    background-color: rgb(247, 54, 173);
+}
+.page{
+    font-size: 25px;
+    color: white;
+    background-color: orange;
+    width: 5%;
+    text-align: center;
+    border-color: orange;
+    
+}
+#last-page{
+    font-size: 26px;
+    color: white;
+}
