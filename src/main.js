@@ -216,5 +216,4 @@ async function init(){
 }
 
 
-console.log("hola")
 init();
