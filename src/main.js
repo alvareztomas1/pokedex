@@ -16,6 +16,7 @@ async function getPokemonData(pokemonName){
         console.error("FAILED", error);
     }
 }
+
 async function createPokemon(pokemon){
 
     const pokemonName = pokemon.name;
@@ -31,6 +32,55 @@ async function createPokemon(pokemon){
     
     
     $pokemonPage.appendChild($pokemon);
+}
+function pokemonSelection(pokedexData){
+
+    document.querySelector("body").onclick = function(event){
+        const selectedPokemon = event.target;
+        
+        if(selectedPokemon.className === "pokemon"){
+            showStats(selectedPokemon.id);
+            return;
+        }
+        
+        
+    }
+
+}
+function showTypes(data){
+    const $type = document.querySelector("#type");
+    const $subtype = document.querySelector("#sub-type");
+
+    removeTypes($type, $subtype);
+    $type.classList.add(data.types[0].type.name);
+    $type.textContent = data.types[0].type.name;
+
+    if(data.types.length > 1){
+        $subtype.classList.remove("visually-hidden");
+        $subtype.classList.add(data.types[1].type.name)
+        $subtype.textContent = data.types[1].type.name;
+
+    }
+
+   return; 
+
+}
+async function showStats(pokemon){
+    const pokemonData = await getPokemonData(pokemon);
+    const $modalHeader = document.querySelector("#title")
+    const $staticTemplate = document.querySelectorAll(".progress-bar");
+    $modalHeader.textContent = pokemonData.name.toUpperCase();
+
+    showTypes(pokemonData);
+
+    const $image = document.querySelector("#modal-img");
+    $image.src = pokemonData.sprites.front_default;
+
+    for(let i = 0; i < $staticTemplate.length; i++){
+        $staticTemplate[i].style.width = `${pokemonData.stats[i].base_stat}%`;
+    }
+    
+    return;
 }
 function createPokemonPage(pokedexData){
 
@@ -54,6 +104,13 @@ function removePokemons(){
 
     return;
 }
+function removeTypes($type, $subtype){
+    $type.classList = "badge bg";
+    $subtype.classList = "badge bg visually-hidden";
+    return;
+
+}
+
 function pageChange(pokemonPerPages){
 
     let $actualPage = document.querySelector("#page").value;
@@ -123,61 +180,10 @@ function pageChange(pokemonPerPages){
     }
 
 } 
-function removeTypes($type, $subtype){
-    $type.classList = "badge bg";
-    $subtype.classList = "badge bg visually-hidden";
-    return;
 
-}
-function showTypes(data){
-    const $type = document.querySelector("#type");
-    const $subtype = document.querySelector("#sub-type");
 
-    removeTypes($type, $subtype);
-    $type.classList.add(data.types[0].type.name);
-    $type.textContent = data.types[0].type.name;
 
-    if(data.types.length > 1){
-        $subtype.classList.remove("visually-hidden");
-        $subtype.classList.add(data.types[1].type.name)
-        $subtype.textContent = data.types[1].type.name;
 
-    }
-
-   return; 
-
-}
-async function showStats(pokemon){
-    const pokemonData = await getPokemonData(pokemon);
-    const $modalHeader = document.querySelector("#title")
-    const $staticTemplate = document.querySelectorAll(".progress-bar");
-    $modalHeader.textContent = pokemonData.name.toUpperCase();
-
-    showTypes(pokemonData);
-
-    const $image = document.querySelector("#modal-img");
-    $image.src = pokemonData.sprites.front_default;
-
-    for(let i = 0; i < $staticTemplate.length; i++){
-        $staticTemplate[i].style.width = `${pokemonData.stats[i].base_stat}%`;
-    }
-    
-    return;
-}
-function pokemonSelection(pokedexData){
-
-    document.querySelector("body").onclick = function(event){
-        const selectedPokemon = event.target;
-        
-        if(selectedPokemon.className === "pokemon"){
-            showStats(selectedPokemon.id);
-            return;
-        }
-        
-        
-    }
-
-}
 function showTotalPages(totalPages){
     document.querySelector("#last-page").textContent = totalPages;
     return;
@@ -198,6 +204,7 @@ function hideLoadingScreen(){
     document.querySelector("#loading").classList.add("visually-hidden");
     return;
 }
+
 async function init(){
     const pokedexData = await getPokedexData();
     const totalPokemon = pokedexData.count;
