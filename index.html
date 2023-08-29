@@ -13,7 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
     integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
     crossorigin="anonymous"></script>
-  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='./src/main.css'>
 
 </head>
 
@@ -24,7 +24,7 @@
 
   <div id="loading" class="d-flex justify-content-center">
     <div class="spinner-border text-light" role="status">
-      <span class="visually-hidden"></span>
+      <span class=""></span>
     </div>
    </div> 
 
@@ -34,11 +34,9 @@
     <div class="modal-dialog">
       <div class="modal-content">
        
-        <div class="modal-body">
+        <div id="stats" class="modal-body">
           <button id="close-button" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
           <h1 id="title" class="modal-title text-center display-6" id="exampleModalLabel"></h1>
-
           <h3 class="text-center"> <img id="modal-img"> <span id="type" class="badge bg"></span> <span id="sub-type" class="badge bg"></span> </h3>
 
 
@@ -52,31 +50,31 @@
           <label for="progress">Attack</label>
           <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0"
             aria-valuemax="100">
-            <div class="progress-bar bg-danger" style="width: 25%"></div>
+            <div id="attack" class="progress-bar bg-danger" style="width: 25%"></div>
           </div>
 
           <label for="progress">Defense</label>
           <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0"
             aria-valuemax="100">
-            <div class="progress-bar bg-warning" style="width: 25%"></div>
+            <div id="defense" class="progress-bar bg-warning" style="width: 25%"></div>
           </div>
 
           <label for="progress">Special attack</label>
           <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0"
             aria-valuemax="100">
-            <div class="progress-bar bg-primary" style="width: 25%"></div>
+            <div id="special-attack" class="progress-bar bg-primary" style="width: 25%"></div>
           </div>
 
           <label for="progress">Special defense</label>
           <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0"
             aria-valuemax="100">
-            <div class="progress-bar bg-secondary" style="width: 25%"></div>
+            <div id="special-defense" class="progress-bar bg-secondary" style="width: 25%"></div>
           </div>
 
           <label for="progress">Speed</label>
           <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0"
             aria-valuemax="100">
-            <div class="progress-bar bg-info" style="width: 25%"></div>
+            <div id="speed" class="progress-bar bg-info" style="width: 25%"></div>
           </div>
 
         </div>
@@ -99,7 +97,7 @@
   <br>
 
 
-<div id="pagination" class="d-grid gap-2 d-md-flex justify-content-md-center">
+<div id="pagination" class="d-grid gap-2 d-md-flex justify-content-md-center visually-hidden">
 
   <button id="previous" type="button" class="btn btn-outline-light">Previous</button>
   <input type="number" id="page" value="1" class="page">
@@ -115,6 +113,6 @@
 
 </body>
 
-<script src='src/main.js' ></script>
+<script src='./src/main.js' type="module"></script>
 
 </html>
